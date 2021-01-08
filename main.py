@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
 # from pandas import DataFrame, read_csv
-import matplotlib.pyplot as pyplot
+import matplotlib.pyplot as plt
 import pandas as pd
 import matplotlib.widgets as widgets
 import numpy as np
 
 month_array = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
 
+#Maximum et minimum pour l'année
 def find_lowest_and_max_temp(df):
     """
     docstring
@@ -27,9 +28,19 @@ def read_climat_file():
     """
     docstring
     """
+    temperature_global=[]
+
     file = r'data/Climat.xls'
-    df = pd.read_excel(file, sheet_name=0)
-    return df
+    dataClimat = pd.read_excel(file, sheet_name=0)
+    # for column in range (3, 15):
+    #     month_temp=[]
+    #     for row in range (3, 34):
+    #         value_temp = dataClimat.iloc[row, column]
+    #         if(not np.isnan(value_temp)):
+    #             month_temp.append(value_temp)
+    # temperature_global.append(month_temp)
+    print(dataClimat)
+    # return temperature_global
 
 #Ecart type par mois
 def retrieve_month_deviation(df, month_name):
@@ -47,13 +58,6 @@ def retrieve_month_average(df, month_name):
     df[df[month_name] != 'NaN']
     print("Moyenne pour", month_name.upper(), ":", df[month_name].std())
 
-
-#Maximum et minimum pour l'année
-def retrieve_max_year(self, parameter_list):
-    """
-    docstring
-    """
-
 #Maximum et minimum pour chaque mois
 def retrieve_min_max_month(df, month_name):
     """
@@ -67,52 +71,68 @@ def read_coordinates():
     data = pd.read_excel(file)
     return data
 
+class SnaptoCursor(object):
+    def __init__(self, ax, x, y):
+        self.ax = ax
+        self.ly = ax.axvline(color='k', alpha=0.2)  # the vert line
+        self.marker, = ax.plot([0],[0], marker="o", color="crimson", zorder=3) 
+        self.x = x
+        self.y = y
+        self.txt = ax.text(0.7, 0.9, '')
+
+    def mouse_move(self, event):
+        if not event.inaxes: return
+        x, y = event.xdata, event.ydata
+        indx = np.searchsorted(self.x, [x])[0]
+        x = self.x[indx]
+        y = self.y[indx]
+        self.ly.set_xdata(x)
+        self.marker.set_data([x],[y])
+        self.txt.set_text('x=%1.2f, y=%1.2f' % (x, y))
+        self.txt.set_position((x,y))
+        self.ax.figure.canvas.draw_idle()
+
 def graph_month(df):
     """
     docstring
     """
     for month_name in month_array:
-        pyplot.figure(month_name)
-        # pyplot.plot(df[month_name])
-        # pyplot.xlabel("Jour du mois")
-        # pyplot.ylabel("Température")
-        # pyplot.title(month_name)
-
-       fig, ax = pyplot.subplots()
-        ax.plot(df[month_name])
-        pyplot.xlabel("Jour du mois")
-        pyplot.ylabel("Température")
-        pyplot.title(month_name)
-        cursor = SnaptoCursor(ax)
-    fig.canvas.mpl_connect('motion_notify_event', cursor.mouse_move)
-
-#     fig, ax = plt.subplots()
-
-# cursor = SnaptoCursor(ax, t, flatten(temperature))
-# cid =  plt.connect('motion_notify_event', cursor.mouse_move)
-
-# ax.plot(t, flatten(temperature),)
-# plt.show()
-
-    return pyplot
+        plt.figure(month_name)
+        plt.plot(df[month_name])
+        plt.xlabel("Jour du mois")
+        plt.ylabel("Température")
+        plt.title(month_name)
+    return plt
 
 
 
 def annual_month(df):
     # flatten = lambda t: [item for sublist in t for item in sublist]
+    print (df)
     temperature = []
 
     for month_name in month_array:
         df[df[month_name] != 'NaN']
         for month_temp in df[df[month_name] != 'NaN'][month_name]:
             temperature.append(month_temp)
-            
-        
-    print(temperature)
-    pyplot.plot(temperature)
-    pyplot.ylabel("Température")
-    pyplot.title("Moyenne Annuel") 
-    pyplot.show()
+
+    # print(temperature)
+    # t = np.arange(1, 366, 1)
+    # # s = np.sin(2*2*np.pi*t)
+    # fig, ax = plt.subplots()
+
+    # cursor = SnaptoCursor(ax, t, temperature)
+    # cid =  plt.connect('motion_notify_event', cursor.mouse_move)
+
+    # ax.plot(t, temperature,)
+    # plt.show()
+    
+
+    # plt.plot(temperature)
+    # plt.ylabel("Température")
+    # plt.xlabel("Jour de l'année")
+    # plt.title("Moyenne Annuel")
+    # plt.show()
 
 
 if __name__ == "__main__":
@@ -139,5 +159,6 @@ if __name__ == "__main__":
     # print("\n")
 
     # graph_month(read_climat_file()).show()
-    # graph_month()
-    annual_month(read_climat_file())
+    # annual_month(read_climat_file())
+    read_climat_file()
+    # annual_month()
