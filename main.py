@@ -16,7 +16,7 @@ def read_climat_file():
     """
     #Récupération des données du fichier Excel
     file = r'data/Climat.xlsx'
-    dataClimatSI = pd.read_excel(file, sheet_name=1)
+    dataClimatSI = pd.read_excel(file, sheet_name=0)
 
     totalTemperature = []
 
@@ -25,10 +25,9 @@ def read_climat_file():
         month_temperature = []
         for row in range (3, 34):
             valueOfTemp = dataClimatSI.iloc[row, col]
-            # if(not np.isnan(valueOfTemp)):
-            month_temperature.append(valueOfTemp)
+            if(not np.isnan(valueOfTemp)):
+                month_temperature.append(valueOfTemp)
         totalTemperature.append(month_temperature)
-    print(totalTemperature)
     return totalTemperature
 
 #Calcul de la moyenne par mois
@@ -140,22 +139,22 @@ def graph_annual_month(dataTemperature):
 
 
 if __name__ == "__main__":
-    read_climat_file()
+    # read_climat_file()
     #Fonction pour la moyenne de chaque mois
-    # retrieve_month_average(read_climat_file())
-    # print("\n")
+    retrieve_month_average(read_climat_file())
+    print("\n")
 
     # Fonction pour l'écart-type de chaque mois
-    # retrieve_month_deviation(read_climat_file())
-    # print("\n")
+    retrieve_month_deviation(read_climat_file())
+    print("\n")
 
     # Fonction pour la température maximale et minimale par mois
-    # retrieve_min_max_month(read_climat_file())
-    # print("\n")
+    retrieve_min_max_month(read_climat_file())
+    print("\n")
 
     # Fonction pour la température maximale et minimale pour l'année
-    # retrieve_min_max_year(read_climat_file())
-    # print("\n")
+    retrieve_min_max_year(read_climat_file())
+    print("\n")
     
     # graph_month(read_climat_file())
 
