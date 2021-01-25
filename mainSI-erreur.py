@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # from pandas import DataFrame, read_csv
 import matplotlib.pyplot as plt
@@ -159,4 +159,4 @@ if __name__ == "__main__":
     
     # graph_month(read_climat_file())
 
-    graph_annual_month(read_climat_file())
+    # graph_annual_month(read_climat_file())
