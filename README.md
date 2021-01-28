@@ -5,26 +5,28 @@ Comparer deux jeux de données de climat pour déterminer la capitale européenn
 On se servira du fichier Savukoskikirkonkyla.xlsx issu de l’open data pour servir de référence.
 
 Objectifs :
-• Mettre en oeuvre un environnement de traitement graphique de données issues de sources plus ou moins fiables.
-• Corriger un jeu de données mal formé
-• proposer un candidat potentiel pour l’origine des données.
+
+- Mettre en oeuvre un environnement de traitement graphique de données issues de sources plus ou moins fiables.
+- Corriger un jeu de données mal formé
+- proposer un candidat potentiel pour l’origine des données.
 
 Déroulement :
-• Pour l’ échanllon SI, calculez :
-    • moyenne par mois
-    • écart type par mois
-    • min /max par mois et par année
-• uliser par Python Scipy pour les pares mathémaques.
-• tracer les courbes de chaque mois avec une bibliothèque graphique python Matplotlib, 12 vues mensuelles 
-• Assembler les courbes sur un seul graphique (J1 -> J365) : vue annuelle
-• Présenter la valeur lue en parcourant la courbe à l'aide du pointeur,
-• Présenter les valeurs précédentes par mois glissant de 30 jours centré sur la valeur lue
-• Recommencez avec le jeu SI-erreur après avoir corrigé les valeurs en erreur. Précisez vos méthodes.
-• Les données corrigées sont elles proches des valeurs sans erreur ?
-• A partir de données opendata du second fichier, retrouver le type de climat
-    • reprendre les données typiques de la localisaon proche fournies en complément , comparer les écarts. 
-    • Qu'en concluez vous ?
-    • De quelle la capitale européenne avez vous eu les données.
+
+- Pour l’échantillon SI, calculez :
+    - moyenne par mois
+    - écart type par mois
+    - min /max par mois et par année
+- utiliser par Python Scipy pour les parties mathématiques.
+- tracer les courbes de chaque mois avec une bibliothèque graphique python Matplotlib, 12 vues mensuelles 
+- Assembler les courbes sur un seul graphique (J1 -> J365) : vue annuelle
+- Présenter la valeur lue en parcourant la courbe à l'aide du pointeur,
+- Présenter les valeurs précédentes par mois glissant de 30 jours centré sur la valeur lue
+- Recommencez avec le jeu SI-erreur après avoir corrigé les valeurs en erreur. Précisez vos méthodes.
+- Les données corrigées sont elles proches des valeurs sans erreur ?
+- A partir de données opendata du second fichier, retrouver le type de climat
+    - reprendre les données typiques de la localisation proche fournies en complément , comparer les écarts. 
+    - Qu'en concluez vous ?
+    - De quelle la capitale européenne avez vous eu les données.
 
 Outils : à utiliser Python + matplotlib, Jupyter éventuellement. Pas de R ni d’autre langage autorisés Evaluation:
 Démonstration des solutions techniques et argumentation sur les méthodes utilisées
