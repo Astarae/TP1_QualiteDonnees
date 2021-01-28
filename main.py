@@ -28,6 +28,7 @@ def read_climat_file():
             if(not np.isnan(valueOfTemp)):
                 month_temperature.append(valueOfTemp)
         totalTemperature.append(month_temperature)
+    print(totalTemperature)
     return totalTemperature
 
 #Calcul de la moyenne par mois
@@ -158,4 +159,4 @@ if __name__ == "__main__":
     
     # graph_month(read_climat_file())
 
-    graph_annual_month(read_climat_file())
+    # graph_annual_month(read_climat_file())

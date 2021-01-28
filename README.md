@@ -15,3 +15,4 @@ TP1 du cours qualité des données
     - Valeur sans erreur : 17.033333333333335
     - Valeur corrigée : 17.103448275862068
 
+Pour le jeu de données avec les erreurs nous avons décidé d'uniquement enlévé les donnnées invalides via différentes méthodes de filtrations, puis nous avons recalculé les différentes valeurs avec les meme methodes que le jeu de données sains. 

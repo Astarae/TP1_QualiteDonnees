@@ -2,6 +2,7 @@
 
 # from pandas import DataFrame, read_csv
 import matplotlib.pyplot as plt
+from numpy.core.fromnumeric import std
 import pandas as pd
 import matplotlib.widgets as widgets
 import numpy as np
@@ -21,20 +22,33 @@ def read_climat_file():
 
     totalTemperature = []
 
-    #On enléve les cases vides qui étaient considérées comme des valeurs nan
     for col in range (3, 15):
         month_temperature = []
         for row in range (3, 34):
             valueOfTemp = dataClimatSIErreur.iloc[row, col]
             
+            if type(valueOfTemp) == str:
+                replacement_value = np.nanmean([dataClimatSIErreur.iloc[row-1, col], dataClimatSIErreur.iloc[row+1, col]])
+                valueOfTemp = replacement_value
+                month_temperature.append(valueOfTemp)
+            
             if type(valueOfTemp) == int:
                 month_temperature.append(valueOfTemp)
-            else:
-                month_temperature.append(None)
 
-        y = np.array(month_temperature,dtype=np.float)
-        totalTemperature.append(y)
-    
+        totalTemperature.append(month_temperature)
+
+    # print(totalTemperature)
+    # for col in range (0, 12):
+    #     # month_temperature = []
+    #     std_month = np.std(totalTemperature[col])
+    #     mean_month = np.nanmean(totalTemperature[col])
+    #     print(std_month)
+    #     for row in range (0, 27):
+    #         if totalTemperature[col][row] > mean_month+std_month:
+    #             print(totalTemperature[col][row])
+    #             totalTemperature[col][row] = mean_month
+
+
     return totalTemperature
 
 #Calcul de la moyenne par mois
@@ -43,12 +57,8 @@ def retrieve_month_average(dataTemperature):
     docstring
     """
     print("#### Moyenne pour chaque mois ####")
-    # if(not np.isnan(valueOfTemp)):
     for month in range(len(dataTemperature)):
-
-        # temp_average = np.average(dataTemperature[month])
-        
-        temp_average = np.nanmean(dataTemperature[month])
+        temp_average = np.average(dataTemperature[month])
         print("Moyenne pour", month_array[month].upper() , ":", temp_average)
 
 #Calcul de l'écart-type de chaque mois
@@ -58,7 +68,7 @@ def retrieve_month_deviation(dataTemperature):
     """
     print("#### Ecart-Type pour chaque mois ####")
     for month in range(len(dataTemperature)):
-        temp_deviation = np.nanstd(dataTemperature[month])
+        temp_deviation = np.std(dataTemperature[month])
         print("Ecart-type pour", month_array[month].upper() , ":", temp_deviation)
 
 #Calcul de la température maximale et minimale par mois
@@ -68,8 +78,8 @@ def retrieve_min_max_month(dataTemperature):
     """
     print("#### Températures maximales et minimales pour chaque mois ####")
     for month in range(len(dataTemperature)):
-        temp_max = np.nanmax(dataTemperature[month])
-        temp_min = np.nanmin(dataTemperature[month])
+        temp_max = np.max(dataTemperature[month])
+        temp_min = np.min(dataTemperature[month])
         print("Pour le mois de ", month_array[month].upper() , " la température minimale est : ", temp_min, "° et la température maximale est : ",  temp_max, "°")
 
 #Calcul de la température maximale et minimale pour l'année
@@ -81,8 +91,8 @@ def retrieve_min_max_year(dataTemperature):
     lowest_year_temp = 0
     highest_year_temp = 0
     for month in range(len(dataTemperature)):
-        temp_max = np.nanmax(dataTemperature[month])
-        temp_min = np.nanmin(dataTemperature[month])
+        temp_max = np.max(dataTemperature[month])
+        temp_min = np.min(dataTemperature[month])
         if lowest_year_temp > temp_min:
             lowest_year_temp = temp_min
         if highest_year_temp < temp_max:
@@ -112,13 +122,14 @@ def graph_annual_month(dataTemperature):
     """
     docstring
     """
+    # print(dataTemperature)
     flatten = lambda t: [item for sublist in t for item in sublist]
 
     class SnaptoCursor(object):
         def __init__(self, ax, x, y):
             self.ax = ax
             self.ly = ax.axvline(color='k', alpha=0.2) 
-            self.marker, = ax.plot([0],[0], marker="o", color="darkorange", zorder=3, markersize=7) 
+            self.marker, = ax.plot([0],[0], marker="o", color="darkorange", zorder=3, markersize=7)
             self.x = x
             self.y = y
             self.txt = ax.text(0.7, 0.9, '')
@@ -152,21 +163,21 @@ def graph_annual_month(dataTemperature):
 if __name__ == "__main__":
     # read_climat_file()
     #Fonction pour la moyenne de chaque mois
-    # retrieve_month_average(read_climat_file())
-    # print("\n")
+    retrieve_month_average(read_climat_file())
+    print("\n")
 
     # # # Fonction pour l'écart-type de chaque mois
-    # retrieve_month_deviation(read_climat_file())
-    # print("\n")
+    retrieve_month_deviation(read_climat_file())
+    print("\n")
 
     # # # Fonction pour la température maximale et minimale par mois
-    # retrieve_min_max_month(read_climat_file())
-    # print("\n")
+    retrieve_min_max_month(read_climat_file())
+    print("\n")
 
     # # # Fonction pour la température maximale et minimale pour l'année
-    # retrieve_min_max_year(read_climat_file())
-    # print("\n")
+    retrieve_min_max_year(read_climat_file())
+    print("\n")
     
-    # graph_month(read_climat_file())
+    graph_month(read_climat_file())
 
     graph_annual_month(read_climat_file())
