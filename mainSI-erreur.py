@@ -37,18 +37,14 @@ def read_climat_file():
 
         totalTemperature.append(month_temperature)
 
-    # print(totalTemperature)
-    # for col in range (0, 12):
-    #     # month_temperature = []
-    #     std_month = np.std(totalTemperature[col])
-    #     mean_month = np.nanmean(totalTemperature[col])
-    #     print(std_month)
-    #     for row in range (0, 27):
-    #         if totalTemperature[col][row] > mean_month+std_month:
-    #             print(totalTemperature[col][row])
-    #             totalTemperature[col][row] = mean_month
-
-
+    # for month in range(len(totalTemperature)):
+    #     std_month = np.std(totalTemperature[month])
+    #     average_month = np.average(totalTemperature[month])
+    #     newArray = totalTemperature[month]
+    #     for a in range(len(newArray)):
+    #         if newArray[a] > average_month + std_month:
+    #             newArray[a] = average_month
+                
     return totalTemperature
 
 #Calcul de la moyenne par mois
@@ -158,10 +154,7 @@ def graph_annual_month(dataTemperature):
 
 
 
-
-
 if __name__ == "__main__":
-    # read_climat_file()
     #Fonction pour la moyenne de chaque mois
     retrieve_month_average(read_climat_file())
     print("\n")
