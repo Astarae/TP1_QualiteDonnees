@@ -68,7 +68,7 @@ Moyenne :
 -----------------
 ## Analyse des données opendata du second fichier
 
-En comparant différentes données, nous pouvons dire que la capitale européenne est soit Oslo ou Helsinki.
+Nous supposons en ayant regardé différentes données sur le site infoclimat (https://www.infoclimat.fr/climatologie-mensuelle/01384/janvier/2018/oslo-gardermoen.html) que la capitale européenne est soit Oslo soit Helsinki.
 
 -----------------
 
