@@ -68,6 +68,7 @@ Moyenne :
 -----------------
 ## Analyse des données opendata du second fichier
 
+En comparant différentes données, nous pouvons dire que la capitale européenne est soit Oslo ou Helsinki.
 
 -----------------
 
