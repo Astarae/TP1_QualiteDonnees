@@ -42,7 +42,7 @@ Dans la fonction __read_climat_file()__ du fichier mainSI-erreur.py, nous avons 
 - Identifier si la valeur est bien de type String.
 - Faire la moyenne de la valeur supérieur et inférieur de la valeur sur laquelle nous allons nous arrêter car c'est un type String.
 - Remplacer cette dites valeur par la moyenne précédemment calculée.
-- Ajoutée valeur à une tableau.
+- Ajoutée valeur à un tableau.
 - Dans ce tableau nous allons avoir toutes les données de notre fichier.
 <!-- - Nous allons donc parcourir ce tableau et calculer la moyenne et l'écart-type de chaque mois.
 - Pour déterminer si celle-ci est supérieure à la moyenne et l'écart-typa additionnées.
