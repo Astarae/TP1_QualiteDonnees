@@ -68,7 +68,23 @@ Moyenne :
 -----------------
 ## Analyse des données opendata du second fichier
 
-Nous supposons en ayant regardé différentes données sur le site infoclimat (https://www.infoclimat.fr/climatologie-mensuelle/01384/janvier/2018/oslo-gardermoen.html) que la capitale européenne est soit Oslo soit Helsinki.
+<!-- • A parr de données opendata du second fichier, retrouver le type de climat
+• reprendre les données typiques de la localisaon proche fournies en complément , comparer les écarts. • Qu'en concluez vous ?
+• De quelle la capitale européenne avez vous eu les données . -->
+Nous avons fait la moyenne de chaque mois en ayant fait au préalable la moyenne des colonnes (Air temperature, Maximum temperature, Minimum temperature). Ensuite, nous avons pu facilement comparer les moyennes de chaque mois des deux fichiers et constater que les températures du second fichier sont des températures plus froid en hiver notamment les mois de Janvier, Février et Mars que le premier et un peu moins chaud l'été.
+
+
+Nous avons pu constater que le climat du premier fichier est un __climat d'une ville situé au Nord de l'Europe__. Probablement un climat __continental__ car en hiver nous constatons qu'il fait très froid (environ -8° en février) et qu'il fait très doux ou agréablement chaud en été (environ 18° en juillet).
+
+
+Après avoir comparé les données sur le site infoclimat grâce aux différents graphiques, nous en avons déduit qu'il s'agissait peut être d'Oslo, Reykjavik, Stockholm ou d'Helsinki.
+
+Nous avons ensuite extrait le fichier de données sur le site kaggle (https://www.kaggle.com/sudalairajkumar/daily-temperature-of-major-cities) pour les analyser et les comparer à notre premier fichier. Nous avons convertir les températures Fahrenheit en degré Celsius.
+
+
+Nous avons fait un graphique avec chaque moyennes de chaque mois pour l'année 2018 avec notre fichier SI.
+
+Nous avons réalisé les moyennes de chaque mois et de chaque villes et nous en avons déduit qu'il s'aggisait de la ville d'__Helsinki__.
 
 -----------------
 

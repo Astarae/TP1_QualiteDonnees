@@ -26,20 +26,102 @@ def read_climat_file():
         for row in range (3, 34):
             valueOfTemp = dataClimatSI.iloc[row, col]
             if(not np.isnan(valueOfTemp)):
-                month_temperature.append(valueOfTemp)
-        totalTemperature.append(month_temperature)
-    print(totalTemperature)
+                totalTemperature.append(valueOfTemp)
+        # totalTemperature.append(month_temperature)
+    # print(totalTemperature)
+    # print(totalTemperature)
+    # print(len(totalTemperature))
     return totalTemperature
 
+
+#Lecture du second fichier
+def read_climat_file_savukoski():
+    """
+    docstring
+    """
+    #Récupération des données du fichier Excel
+    file = r'data/Savukoski kirkonkyla.xlsx'
+    df = pd.read_excel(file, sheet_name=2)
+    return df[df.columns[[1,5,6,7]]]
+
+def read_climat_file_city_temperature(city):
+    """
+    docstring
+    """
+    #Récupération des données du fichier Excel
+    file = r'data/city_temperature.csv'
+    df = pd.read_csv(file, error_bad_lines=False, dtype={"Region": "string", "Country": "string", "State": "string", "City": "string", "Month": int, "Day": int, "Year": int, "AvgTemperature": float})
+    df_tmp = df.loc[(df["City"] == city) & (df["Year"] == 2018)]
+    # print(df_tmp[df_tmp.columns[[4,7]]]) 
+    return df_tmp[df_tmp.columns[[4,7]]]
+
+def retrieve_all_day_per_month_for_city_temperature(df, city):
+    annual_temps = []
+    # month_temp = []
+    for index in range(1, 13):
+        df_tmp = df.loc[df["Month"] == index]
+        # print(df_tmp)
+        # Celsius = (Fahrenheit - 32) * (5.0/9.0)
+        # print(df_tmp[df_tmp.columns[1]])
+
+        # tmp_month_tmp = []
+        for day_temp in df_tmp[df_tmp.columns[1]]:
+            annual_temps.append((day_temp-32)  * (5.0/9.0))
+        # f_to_c = (df_tmp[df_tmp.columns[1]] - 32) * (5.0/9.0)
+
+        # month_temp.append(tmp_month_tmp)
+        # print(month_temp)
+
+    # print(len(annual_temps))
+    # print("#### Moyenne pour chaque mois à ", city, "####")
+    # for month in range(len(month_temp)):
+    #     temp_average_for_month = month_temp[month]
+    #     print("Moyenne pour", month_array[month].upper() , ":", temp_average_for_month)
+    # print(annual_temps)
+    # print(len(annual_temps))
+    return annual_temps
+
+def retrieve_mean_per_month(df):
+    annual_temps = []
+    for index in range(1, 13):
+        df_tmp = df.loc[df['m'] == index]
+        # print(df_tmp)
+        for day_temp in df_tmp:
+            # annual_temps.append()
+            # print(df_tmp[day_temp])
+            print(day_temp)
+            # print(df_tmp[df_tmp.columns[1]][day_temp])
+    #     month_temp.append(np.mean([np.mean(df_tmp[df_tmp.columns[1]]), np.mean(df_tmp[df_tmp.columns[2]]), np.mean(df_tmp[df_tmp.columns[3]])]))
+    #     annual_temps
+    
+    # print("#### Moyenne pour chaque mois à SAVUKOSKI####")
+    # for month in range(len(month_temp)):
+    #     temp_average_for_month = month_temp[month]
+    #     print("Moyenne pour", month_array[month].upper() , ":", temp_average_for_month)
+    
+    # return month_temp
+    
 #Calcul de la moyenne par mois
 def retrieve_month_average(dataTemperature):
     """
     docstring
     """
-    print("#### Moyenne pour chaque mois ####")
+    month_temp = []
     for month in range(len(dataTemperature)):
         temp_average = np.average(dataTemperature[month])
-        print("Moyenne pour", month_array[month].upper() , ":", temp_average)
+        month_temp.append(temp_average)
+        # print("Moyenne pour", month_array[month].upper() , ":", temp_average)
+
+    # print("#### Moyenne pour chaque mois ####")
+    # for month in range(len(dataTemperature)):
+    #     temp_average = np.average(dataTemperature[month])
+    #     print("Moyenne pour", month_array[month].upper() , ":", temp_average)
+
+    for month in range(len(month_temp)):
+        temp_average_for_month = month_temp[month]
+        print("Moyenne pour", month_array[month].upper() , ":", temp_average_for_month)
+
+    return month_temp
 
 #Calcul de l'écart-type de chaque mois
 def retrieve_month_deviation(dataTemperature):
@@ -84,18 +166,50 @@ def get_cmap(n, name='hsv'):
     return plt.cm.get_cmap(name, n)
 
 #Création de graphiques pour chaque mois
-def graph_month(dataTemperature):
+# def graph_month(dataTemperature):
+#     """
+#     docstring
+#     """
+#     cmap = get_cmap(len(dataTemperature))
+#     for month in range(len(dataTemperature)):
+#         plt.figure("Graphique des mois")
+#         plt.plot(dataTemperature[month], color=cmap(month))
+#         plt.xlabel("Jour du mois")
+#         plt.ylabel("Température")
+#         plt.title(month_array[month])
+#         plt.show()
+
+def comparaison_graph_annual_month():
     """
     docstring
     """
-    cmap = get_cmap(len(dataTemperature))
-    for month in range(len(dataTemperature)):
-        plt.figure("Graphique des mois")
-        plt.plot(dataTemperature[month], color=cmap(month))
-        plt.xlabel("Jour du mois")
-        plt.ylabel("Température")
-        plt.title(month_array[month])
-        plt.show()
+    flatten = lambda t: [item for sublist in t for item in sublist]
+    # print(otherCity)
+    # print(dataTemperature)
+
+    # array_si = read_climat_file()
+    # # print("\n")
+    # array_oslo = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Oslo"), "Oslo")
+    # # print("\n")
+    # array_helsinki = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Helsinki"), "Helsinki")
+    # # print("\n")
+    # array_reykjavik = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Reykjavik"), "Reykjavik")
+    # # print("\n")
+    # array_stockholm = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Stockholm"), "Stockholm")
+    # print("\n")    
+
+
+    t = np.arange(1, 366, 1)
+    fig, ax = plt.subplots()
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    # ax.plot(t, array_oslo, color='red', label="Oslo")
+    # ax.plot(t, array_helsinki, color='green', label="Helsinki")
+    # ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik,")
+    # ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
+    
+    plt.title("Graphique des températures en fonction des jours de l'année")
+    plt.show()
+
 
 #Création d'un graphique pour l'année
 def graph_annual_month(dataTemperature):
@@ -140,23 +254,41 @@ def graph_annual_month(dataTemperature):
 
 
 if __name__ == "__main__":
-    # read_climat_file()
+    # comparaison_graph_annual_month()
     #Fonction pour la moyenne de chaque mois
-    retrieve_month_average(read_climat_file())
-    print("\n")
+    # retrieve_month_average(read_climat_file())
+    # print("\n")
+
+    #Fonction pour la moyenne pour savukoski
+    retrieve_mean_per_month(read_climat_file_savukoski())
+    # print("\n")
+
+
+    # retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Helsinki"), "Helsinki")
+    # print("\n")
+    
+    # retrieve_mean_per_month_for_city_temperature(read_climat_file_city_temperature("Oslo"), "Oslo")
+    # print("\n")
+
+    # retrieve_mean_per_month_for_city_temperature(read_climat_file_city_temperature("Stockholm"), "Stockholm")
+    # print("\n")
+    
+    # retrieve_mean_per_month_for_city_temperature(read_climat_file_city_temperature("Reykjavik"), "Reykjavik")
+    # print("\n")
 
     # Fonction pour l'écart-type de chaque mois
-    retrieve_month_deviation(read_climat_file())
-    print("\n")
+    # retrieve_month_deviation(read_climat_file())
+    # print("\n")
 
     # Fonction pour la température maximale et minimale par mois
-    retrieve_min_max_month(read_climat_file())
-    print("\n")
+    # retrieve_min_max_month(read_climat_file())
+    # print("\n")
 
     # Fonction pour la température maximale et minimale pour l'année
-    retrieve_min_max_year(read_climat_file())
-    print("\n")
+    # retrieve_min_max_year(read_climat_file())
+    # print("\n")
     
+
     # graph_month(read_climat_file())
 
     # graph_annual_month(read_climat_file())
