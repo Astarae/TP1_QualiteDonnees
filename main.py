@@ -166,18 +166,20 @@ def get_cmap(n, name='hsv'):
     return plt.cm.get_cmap(name, n)
 
 #Création de graphiques pour chaque mois
-# def graph_month(dataTemperature):
-#     """
-#     docstring
-#     """
-#     cmap = get_cmap(len(dataTemperature))
-#     for month in range(len(dataTemperature)):
-#         plt.figure("Graphique des mois")
-#         plt.plot(dataTemperature[month], color=cmap(month))
-#         plt.xlabel("Jour du mois")
-#         plt.ylabel("Température")
-#         plt.title(month_array[month])
-#         plt.show()
+def graph_month(dataTemperature):
+    """
+    docstring
+    """
+    cmap = get_cmap(len(dataTemperature))
+    for month in range(len(dataTemperature)):
+        plt.figure("Graphique des mois")
+        plt.plot(dataTemperature[month], color=cmap(month))
+        # plt.xlabel("Jour du mois")
+        # plt.ylabel("Température")
+        # plt.title(month_array[month])
+        plt.set(xlabel='Jours', ylabel='Température (°C)',
+        title=month_array[month])
+        plt.show()
 
 def comparaison_graph_annual_month():
     """
@@ -206,8 +208,9 @@ def comparaison_graph_annual_month():
     # ax.plot(t, array_helsinki, color='green', label="Helsinki")
     # ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik,")
     # ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
-    
-    plt.title("Graphique des températures en fonction des jours de l'année")
+    ax.legend()
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures')
     plt.show()
 
 
@@ -243,9 +246,10 @@ def graph_annual_month(dataTemperature):
     fig, ax = plt.subplots()
     cursor = SnaptoCursor(ax, t, flatten(dataTemperature))
     cid =  plt.connect('motion_notify_event', cursor.mouse_move)
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures')
 
     ax.plot(t, flatten(dataTemperature), color='darkturquoise')
-    plt.title("Graphique des températures en fonction des jours de l'année")
     plt.show()
    
 
