@@ -78,10 +78,29 @@ Après avoir comparé les données sur le site infoclimat grâce aux différents
 
 Nous avons ensuite extrait le fichier de données sur le site kaggle (https://www.kaggle.com/sudalairajkumar/daily-temperature-of-major-cities) pour les analyser et les comparer à notre premier fichier. Nous avons convertir les températures Fahrenheit en degré Celsius.
 
+Nous avons fait un graphique avec chaque moyennes de chaque mois pour l'année __2018__ avec notre fichier SI.
 
-Nous avons fait un graphique avec chaque moyennes de chaque mois pour l'année 2018 avec notre fichier SI.
+###### Comparaison du SI avec Savukoski
+<!-- ![graph Savukoski](/screenshot/helsinki.png) -->
 
-Nous avons réalisé les moyennes de chaque mois et de chaque villes et nous en avons déduit qu'il s'aggisait de la ville d'__Helsinki__.
+###### Comparaison du SI avec Olso
+![graph olso](/screenshot/oslo.png)
+
+###### Comparaison du SI avec Helsinki
+![graph helsinki](/screenshot/helsinki.png)
+
+###### Comparaison du SI avec Reykjavik
+![graph Reykjavik](/screenshot/reyk.png)
+
+###### Comparaison du SI avec Stockholm
+![graph Stockholm](/screenshot/stockholm.png)
+
+<!--  ###### Comparaison du SI avec Helsinki
+![graph helsinki](/screenshot/helsinki.png) -->
+
+Chaque graphiques représentent les températures par jours des deux villes.
+
+Nous en avons déduit qu'il s'aggisait de la ville d'__Helsinki__.
 
 -----------------
 
