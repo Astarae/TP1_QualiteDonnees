@@ -36,6 +36,7 @@ Démonstration des solutions techniques et argumentation sur les méthodes utili
 ## Fichier SI
 
 Graphique pour les températures à l'année :
+
 ![graph annuel](/screenshot/graphAnnual.png)
 
 -----------------
@@ -85,7 +86,7 @@ Nous avons ensuite extrait le fichier de données sur le site kaggle (https://ww
 Chaque graphiques représentent les températures par jours pour l'année __2018__  de notre fichier SI et d'une autre ville.
 
 ###### Comparaison du SI avec Savukoski
-![graph Savukoski](/screenshot/savukoski.png)
+![graph Savukoski](/screenshot/Savukoski.png)
 
 ###### Comparaison du SI avec Olso
 ![graph olso](/screenshot/oslo.png)
@@ -94,14 +95,14 @@ Chaque graphiques représentent les températures par jours pour l'année __2018
 ![graph helsinki](/screenshot/helsinki.png)
 
 ###### Comparaison du SI avec Reykjavik
-![graph Reykjavik](/screenshot/reykjavik.png)
+![graph Reykjavik](/screenshot/Reykjavik.png)
 
 ###### Comparaison du SI avec Stockholm
 ![graph Stockholm](/screenshot/stockholm.png)
 
 
 ###### Comparaison du SI avec toutes les villes
-![graph Stockholm](/screenshot/comparaison.png)
+![graph de comparaison](/screenshot/Comparaison.png)
 
 -----------------
 
