@@ -155,6 +155,8 @@ def comparaison_graph_annual_month():
     """
     docstring
     """
+
+    # array_city = [array_savukoski, array_oslo, array_helsinki, array_reykjavik, array_stockholm]
      
     array_si = read_climat_file_for_annual_reading()
     array_savukoski = retrieve_year_temp_savu(read_climat_file_savukoski())
@@ -163,17 +165,18 @@ def comparaison_graph_annual_month():
     array_reykjavik = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Reykjavik"), "Reykjavik")
     array_stockholm = retrieve_all_day_per_month_for_city_temperature(read_climat_file_city_temperature("Stockholm"), "Stockholm")
     
-
+    # for city in array_city:
+    # cmap = get_cmap(len(array_city))
     t = np.arange(1, 366, 1)
     fig, ax = plt.subplots()
     ax.set(xlabel='Jours', ylabel='Température (°C)',
-        title='Graphique des températures')
+        title='Graphique des températures Savu')
     ax.plot(t, array_si, color='darkturquoise', label="SI")
     ax.plot(t, array_savukoski, color='deeppink', label="Savukoski")
-    ax.plot(t, array_oslo, color='red', label="Oslo")
-    ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
-    ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik")
-    ax.plot(t, array_helsinki, color='green', label="Helsinki")
+    # ax.plot(t, array_oslo, color='red', label="Oslo")
+    # ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
+    # ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik")
+    # ax.plot(t, array_helsinki, color='green', label="Helsinki")
     ax.grid()
     ax.legend()
     # fig.savefig("screenshot/helsinki.png")
@@ -182,6 +185,47 @@ def comparaison_graph_annual_month():
     # fig.savefig("screenshot/stockholm.png")
     # fig.savefig("screenshot/comparaison.png")
     # fig.savefig("screenshot/oslo.png")
+    plt.show()
+
+
+    t = np.arange(1, 366, 1)
+    fig, ax = plt.subplots()
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures Oslo')
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    ax.plot(t, array_oslo, color='red', label="Oslo")
+    ax.grid()
+    ax.legend()
+    plt.show()
+
+    t = np.arange(1, 366, 1)
+    fig, ax = plt.subplots()
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures Stockholm')
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    ax.plot(t, array_stockholm, color='red', label="Oslo")
+    ax.grid()
+    ax.legend()
+    plt.show()
+
+    t = np.arange(1, 366, 1)
+    fig, ax = plt.subplots()
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures Reykjavik')
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    ax.plot(t, array_reykjavik, color='red', label="Oslo")
+    ax.grid()
+    ax.legend()
+    plt.show()
+
+    t = np.arange(1, 366, 1)
+    fig, ax = plt.subplots()
+    ax.set(xlabel='Jours', ylabel='Température (°C)',
+        title='Graphique des températures Helsinki')
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    ax.plot(t, array_helsinki, color='red', label="Oslo")
+    ax.grid()
+    ax.legend()
     plt.show()
 
 
