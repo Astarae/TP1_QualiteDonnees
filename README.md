@@ -88,10 +88,10 @@ Chaque graphiques représentent les températures par jours pour l'année __2018
 ![graph Savukoski](/screenshot/Savukoski.png)
 
 ###### Comparaison du SI avec Olso
-![graph olso](/screenshot/Oslo.png)
+![graph olso](/screenshot/oslo.png)
 
 ###### Comparaison du SI avec Helsinki
-![graph helsinki](/screenshot/Helsinki.png)
+![graph helsinki](/screenshot/helsinki.png)
 
 ###### Comparaison du SI avec Reykjavik
 ![graph Reykjavik](/screenshot/Reykjavik.png)
