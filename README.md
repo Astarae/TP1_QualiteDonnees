@@ -97,7 +97,7 @@ Chaque graphiques représentent les températures par jours pour l'année __2018
 ![graph Reykjavik](/screenshot/Reykjavik.png)
 
 ###### Comparaison du SI avec Stockholm
-![graph Stockholm](/screenshot/Stockholm.png)
+![graph Stockholm](/screenshot/stockholm.png)
 
 
 ###### Comparaison du SI avec toutes les villes
