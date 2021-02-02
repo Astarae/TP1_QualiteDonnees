@@ -33,6 +33,13 @@ Démonstration des solutions techniques et argumentation sur les méthodes utili
 
 -----------------
 
+## Fichier SI
+
+Graphique pour les températures à l'année :
+![graph annuel](/screenshot/graphAnnual.png)
+
+-----------------
+
 ## Explications de notre méthode pour corriger les valeurs du jeu SI-erreur
 
 Dans la fonction __read_climat_file()__ du fichier mainSI-erreur.py, nous avons décidé de corriger les valeurs de la façon suivante : 
@@ -65,9 +72,6 @@ Valeur corrigée | 1.2419354838709677 | 17.0
 -----------------
 ## Analyse des données opendata du second fichier
 
-<!-- • A parr de données opendata du second fichier, retrouver le type de climat
-• reprendre les données typiques de la localisaon proche fournies en complément , comparer les écarts. • Qu'en concluez vous ?
-• De quelle la capitale européenne avez vous eu les données . -->
 Nous avons fait la moyenne de chaque mois en ayant fait au préalable la moyenne des colonnes (Air temperature, Maximum temperature, Minimum temperature). Ensuite, nous avons pu facilement comparer les moyennes de chaque mois des deux fichiers et constater que les températures du second fichier sont des températures plus froid en hiver notamment les mois de Janvier, Février et Mars que le premier et un peu moins chaud l'été.
 
 
@@ -78,27 +82,30 @@ Après avoir comparé les données sur le site infoclimat grâce aux différents
 
 Nous avons ensuite extrait le fichier de données sur le site kaggle (https://www.kaggle.com/sudalairajkumar/daily-temperature-of-major-cities) pour les analyser et les comparer à notre premier fichier. Nous avons convertir les températures Fahrenheit en degré Celsius.
 
-Nous avons fait un graphique avec chaque moyennes de chaque mois pour l'année __2018__ avec notre fichier SI.
+Chaque graphiques représentent les températures par jours pour l'année __2018__  de notre fichier SI et d'une autre ville.
 
 ###### Comparaison du SI avec Savukoski
-<!-- ![graph Savukoski](/screenshot/helsinki.png) -->
+![graph Savukoski](/screenshot/Savukoski.png)
 
 ###### Comparaison du SI avec Olso
-![graph olso](/screenshot/oslo.png)
+![graph olso](/screenshot/Oslo.png)
 
 ###### Comparaison du SI avec Helsinki
-![graph helsinki](/screenshot/helsinki.png)
+![graph helsinki](/screenshot/Helsinki.png)
 
 ###### Comparaison du SI avec Reykjavik
-![graph Reykjavik](/screenshot/reyk.png)
+![graph Reykjavik](/screenshot/Reykjavik.png)
 
 ###### Comparaison du SI avec Stockholm
-![graph Stockholm](/screenshot/stockholm.png)
+![graph Stockholm](/screenshot/Stockholm.png)
 
-<!--  ###### Comparaison du SI avec Helsinki
-![graph helsinki](/screenshot/helsinki.png) -->
 
-Chaque graphiques représentent les températures par jours des deux villes.
+###### Comparaison du SI avec toutes les villes
+![graph Stockholm](/screenshot/Comparaison.png)
+
+-----------------
+
+## La capitale européenn
 
 Nous en avons déduit qu'il s'aggisait de la ville d'__Helsinki__.
 
