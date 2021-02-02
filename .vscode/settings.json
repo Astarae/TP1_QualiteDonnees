@@ -1,7 +1,7 @@
 {
     "python.pythonPath": "/usr/local/opt/python@3.9/libexec/bin/python",
     "extensions.ignoreRecommendations": true,
-    "files.autoSave": "off",
+    "files.autoSave": "afterDelay",
     "typescript.tsc.autoDetect": "off",
     "npm.autoDetect": "off",
     "debug.allowBreakpointsEverywhere": true,

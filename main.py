@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 # from pandas import DataFrame, read_csv
 import matplotlib.pyplot as plt
@@ -166,22 +166,22 @@ def comparaison_graph_annual_month():
 
     t = np.arange(1, 366, 1)
     fig, ax = plt.subplots()
-    ax.plot(t, array_si, color='darkturquoise', label="SI")
-    ax.plot(t, array_savukoski, color='deeppink', label="Savukoski")
-    # fig.savefig("screenshot/Savukoski.png")
-    ax.plot(t, array_oslo, color='red', label="Oslo")
-    # fig.savefig("screenshot/Oslo.png")
-    ax.plot(t, array_helsinki, color='green', label="Helsinki")
-    # fig.savefig("screenshot/Helsinki.png")
-    ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik")
-    # fig.savefig("screenshot/Reykjavik.png")
-    ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
-    # fig.savefig("screenshot/Stockholm.png")
-    # fig.savefig("screenshot/Comparaison.png")
-    ax.grid()
     ax.set(xlabel='Jours', ylabel='Température (°C)',
         title='Graphique des températures')
+    ax.plot(t, array_si, color='darkturquoise', label="SI")
+    ax.plot(t, array_savukoski, color='deeppink', label="Savukoski")
+    ax.plot(t, array_oslo, color='red', label="Oslo")
+    ax.plot(t, array_stockholm, color='darkorange', label="Stockholm")
+    ax.plot(t, array_reykjavik, color='darkviolet', label="Reykjavik")
+    ax.plot(t, array_helsinki, color='green', label="Helsinki")
+    ax.grid()
     ax.legend()
+    # fig.savefig("screenshot/helsinki.png")
+    # fig.savefig("screenshot/reykjavik.png")
+    # fig.savefig("screenshot/savukoski.png")
+    # fig.savefig("screenshot/stockholm.png")
+    # fig.savefig("screenshot/comparaison.png")
+    # fig.savefig("screenshot/oslo.png")
     plt.show()
 
 
@@ -221,8 +221,8 @@ def graph_annual_month(dataTemperature):
     cid =  plt.connect('motion_notify_event', cursor.mouse_move)
     ax.set(xlabel='Jours', ylabel='Température (°C)',
         title='Graphique annuel')
-    # fig.savefig("screenshot/graphAnnual.png")
     ax.plot(t, flatten(dataTemperature), color='darkturquoise')
+    # fig.savefig("screenshot/graphAnnual.png")
     plt.show()
    
 
